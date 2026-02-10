@@ -3,7 +3,7 @@ from .models import Note
 
 
 def noteAppHome(request):
-    notes = Note.objects.all().order_by("-created_by")
+    notes = Note.objects.all().order_by("-created_at")
     return render(request, "index.html", {"notes": notes})
 
 
