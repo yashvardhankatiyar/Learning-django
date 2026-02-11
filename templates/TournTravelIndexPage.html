@@ -10,11 +10,64 @@
 
 <body class="bg-gray-100">
 
-<div class="max-w-7xl mx-auto p-10">
 
-    <h1 class="text-4xl font-bold text-center mb-10">
-        🌍 Travel Destinations
-    </h1>
+<!-- 🔹 Top Navbar -->
+<div class="bg-white shadow-md">
+
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+       
+        <!-- Left → Auth buttons -->
+        <div class="flex gap-3 items-center">
+
+            {% if user.is_authenticated %}
+
+                <!-- 👤 Username -->
+                <span class="font-semibold text-gray-700">
+                    👋 {{ user.username }}
+                </span>
+
+                <!-- Logout -->
+                <a href="{% url 'logout' %}"
+                class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 text-sm font-semibold">
+                Logout
+                </a>
+
+            {% else %}
+
+                <!-- Register -->
+                <a href="{% url 'register' %}"
+                class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm font-semibold">
+                Register
+                </a>
+
+                <!-- Login -->
+                <a href="{% url 'login' %}"
+                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm font-semibold">
+                Login
+                </a>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Center → Title -->
+        <h1 class="text-2xl font-bold">
+            🌍 Travel Destinations
+        </h1>
+
+        <!-- Right → empty (for spacing symmetry) -->
+        <div></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- 🔹 Main Section -->
+<div class="max-w-7xl mx-auto p-10">
 
     <!-- Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -30,7 +83,8 @@
             {% endif %}
 
             <!-- Image -->
-            <img src="{{ dest.img.url }}"" class="w-full h-48 object-cover">
+            <img src="{{ dest.img.url }}" class="w-full h-48 object-cover">
+
             <!-- Content -->
             <div class="p-5">
 
