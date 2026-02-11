@@ -30,9 +30,7 @@
             {% endif %}
 
             <!-- Image -->
-            <img src="{% static 'images/' %}{{ dest.img }}"
-                 class="w-full h-48 object-cover">
-
+            <img src="{{ dest.img.url }}"" class="w-full h-48 object-cover">
             <!-- Content -->
             <div class="p-5">
 
