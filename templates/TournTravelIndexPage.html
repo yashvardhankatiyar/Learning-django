@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Travel Destinations</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="max-w-7xl mx-auto p-10">
+
+    <h1 class="text-4xl font-bold text-center mb-10">
+        🌍 Travel Destinations
+    </h1>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        {% for dest in dests %}
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition relative">
+
+            <!-- 🔥 Special Offer Badge -->
+            {% if dest.isOffer %}
+            <div class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-10 animate-pulse">
+                🔥 Special Offer
+            </div>
+            {% endif %}
+
+            <!-- Image -->
+            <img src="{% static 'images/' %}{{ dest.img }}"
+                 class="w-full h-48 object-cover">
+
+            <!-- Content -->
+            <div class="p-5">
+
+                <h2 class="text-xl font-semibold mb-2">
+                    {{ dest.name }}
+                </h2>
+
+                <p class="text-gray-600 mb-4">
+                    {{ dest.desc }}
+                </p>
+
+                <div class="flex justify-between items-center">
+
+                    <span class="text-lg font-bold text-green-600">
+                        ₹{{ dest.price }}
+                    </span>
+
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        Book Now
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+</body>
+</html>
